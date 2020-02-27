@@ -1,5 +1,5 @@
 <template>
 <div>
-HELLO WORLD !!!
+  <v-animated-text>Page Area</v-animated-text>
 </div>
 </template>
