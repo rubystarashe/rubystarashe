@@ -13,7 +13,7 @@ export default {
 <style lang="scss">
 .layouts_default_navigation_right_top_area {
   position: fixed;
-  right: 0;
-  top: 0;
+  right: calc(2vh + 2vw);
+  top: calc(1vh + 1vw);
 }
 </style>

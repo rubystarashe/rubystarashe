@@ -29,7 +29,7 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-  font-size: calc(.7vh + .7vw);
+  font-size: calc(.8vh + .8vw);
 }
 
 .layout_area {
