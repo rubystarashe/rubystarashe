@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "nuxt": "^2.11.0"
+    "lerp": "^1.0.3",
+    "nuxt": "^2.12.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

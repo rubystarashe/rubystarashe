@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="layouts_default_navigation_area">
   <v-left-bottom/>
   <v-left-top/>
   <v-right-middle/>
@@ -25,3 +25,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.layouts_default_navigation_area {
+  position: fixed;
+  z-index: 9;
+  color: white;
+  mix-blend-mode: exclusion;
+}
+</style>
