@@ -1,5 +1,5 @@
 <template>
-<div class="navigation_element_area" ref="navigationElement" @mousemove="mousemove" @mouseleave="mouseleave">
+<div class="navigation_element_area" ref="navigationElement" @mousemove="mousemove" @mouseleave="mouseleave" :style="{ 'pointer-events': lock ? 'none' : null }">
   <div class="navigation_element" :style="{ transform: `matrix(1, 0, 0, 1, ${offsetX_Lerp / 2}, ${offsetY_Lerp / 2})` }">
     <slot/>
   </div>
@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  props: ['lock'],
   data () {
     return {
       offsetX: 0,
@@ -19,11 +20,14 @@ export default {
   },
   methods: {
     mousemove (event) {
-      const { offsetWidth, offsetHeight } = this.$refs.navigationElement
-      const { offsetX, offsetY } = event
-      this.offsetX = offsetX - (offsetWidth / 2)
-      this.offsetY = offsetY - (offsetHeight / 2)
-      if (!this.lerpCheck) this.lerp()
+      if (this.lock) this.mouseleave()
+      else {
+        const { offsetWidth, offsetHeight } = this.$refs.navigationElement
+        const { offsetX, offsetY } = event
+        this.offsetX = offsetX - (offsetWidth / 2)
+        this.offsetY = offsetY - (offsetHeight / 2)
+        if (!this.lerpCheck) this.lerp()
+      }
     },
     mouseleave () {
       this.offsetX = 0

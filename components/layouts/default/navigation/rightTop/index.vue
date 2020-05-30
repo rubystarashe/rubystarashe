@@ -1,8 +1,14 @@
 <template>
-<div class="layouts_default_navigation_right_top_area">
+<div class="layouts_default_navigation_right_top_area" v-if="view">
   <v-navigation-element>All</v-navigation-element>
 </div>
 </template>
+
+<script>
+export default {
+  props: ['view']
+}
+</script>
 
 <style lang="scss">
 .layouts_default_navigation_right_top_area {

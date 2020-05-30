@@ -1,6 +1,5 @@
 <template>
 <div :style="{ height: `${bodyScrollHeight}px` }">
-  Scroll Area
 </div>
 </template>
 

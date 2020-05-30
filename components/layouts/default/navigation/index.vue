@@ -1,10 +1,10 @@
 <template>
 <div class="layouts_default_navigation_area">
-  <v-left-bottom/>
-  <v-left-top/>
-  <v-right-middle/>
-  <v-right-bottom/>
-  <v-right-top/>
+  <v-left-bottom :view="!loading"/>
+  <v-left-top :view="!loading"/>
+  <v-right-middle :view="!loading"/>
+  <v-right-bottom :view="!loading"/>
+  <v-right-top :view="!loading"/>
 </div>
 </template>
 
@@ -22,6 +22,14 @@ export default {
     vRightMiddle,
     vRightBottom,
     vRightTop
+  },
+  data () {
+    return {
+      loading: true
+    }
+  },
+  mounted () {
+    this.$EventBus.$on('navigation_loading', v => this.loading = v)
   }
 }
 </script>
