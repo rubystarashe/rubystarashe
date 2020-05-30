@@ -1,6 +1,6 @@
 <template>
-<div class="test">
-  
+<div>
+
 </div>
 </template>
 
@@ -13,8 +13,5 @@ export default {
 </script>
 
 <style lang="scss">
-.test {
-  position: absolute;
-  top: 0;
-}
+
 </style>
