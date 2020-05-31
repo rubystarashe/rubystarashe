@@ -49,6 +49,11 @@ export default {
       handler: function (n, p) {
         this.setScrollHeight()
       }
+    },
+    scrollAcceleration: {
+      handler: function (n, p) {
+        this.setScrollHeight()
+      }
     }
   },
   mounted () {
@@ -68,5 +73,7 @@ export default {
 .document_area {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
 }
 </style>
