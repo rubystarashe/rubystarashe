@@ -1,7 +1,7 @@
 <template>
 <div class="layouts_default_progress_bottom_progress_area">
   <v-progress-guide :progress="progress"/>
-  <div class="progress_text">{{progress}}</div>
+  <div class="progress_text">{{progress}} {{scrollProgress}}</div>
   <div class="progress_bar" :style="{ width: `${progress}%`, 'clip-path': `polygon(${scrollProgress}% 0, 100% 0%, 100% 100%, ${scrollProgress}% 100%)` }"/>
 </div>
 </template>

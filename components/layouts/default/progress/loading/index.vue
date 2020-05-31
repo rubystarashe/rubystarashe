@@ -52,6 +52,7 @@ export default {
     loadedList: {
       handler: function (n, p) {
         if (n.length && this.preloadList.length == n.length) {
+          this.$store.commit('interface/init', true)
           setTimeout(() => {
             this.$store.commit('interface/loading', false)
             this.loadingSwitch(false)

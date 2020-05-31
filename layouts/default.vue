@@ -28,6 +28,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: calc(.8vh + .8vw);
   background: #EFEFEF;
+  overflow-y: scroll;
 }
 
 .layout_area {

@@ -20,6 +20,10 @@ export default {
     }
   },
   methods: {
+    setScrollPosition () {
+      this.$store.commit('interface/windowHeight', window.innerHeight)
+      this.$store.commit('interface/scrollPosition', window.scrollY)
+    },
     lerp () {
       if (this.scrollPosition_lerp != this.scrollPosition) {
         this.$store.dispatch('interface/set_scrollPosition_lerp', this.$lerp(this.scrollPosition_lerp, this.scrollPosition, 0.1).toFixed(1))
@@ -29,12 +33,17 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', e => {
-      this.$store.commit('interface/scrollPosition', window.scrollY)
+      this.setScrollPosition()
     })
+    window.addEventListener('resize', e => {
+      this.setScrollPosition()
+    })
+    this.setScrollPosition()
     this.lerp()
   },
   beforeDestroy () {
     window.removeEventListener('scroll', () => {}, true)
+    window.removeEventListener('resize', () => {}, true)
   }
 }
 </script>

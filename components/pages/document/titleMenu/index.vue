@@ -1,6 +1,7 @@
 <template>
 <div>
-  <v-title/>
+  <v-title class="pages_document_titleMenu_area"/>
+  test
 </div>
 </template>
 
@@ -13,3 +14,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.pages_document_titleMenu_area {
+  height: 150vh;
+  background: green;
+}
+</style>
