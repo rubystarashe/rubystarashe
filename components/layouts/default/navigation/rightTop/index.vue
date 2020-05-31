@@ -1,6 +1,6 @@
 <template>
 <div class="layouts_default_navigation_right_top_area" v-if="view">
-  <v-navigation-element>All</v-navigation-element>
+  <v-navigation-element>Contact</v-navigation-element>
 </div>
 </template>
 

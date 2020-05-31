@@ -31,8 +31,8 @@ export default {
 .layouts_default_progress_bottom_progress_area {
   position: fixed;
   bottom: 0;
-  left: calc(11vh + 11vw);
-  right: 0;
+  left: calc(5vh + 5vw);
+  right: calc(5vh + 5vw);
   overflow: hidden;
   color: white;
   mix-blend-mode: exclusion;

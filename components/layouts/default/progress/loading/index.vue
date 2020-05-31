@@ -36,6 +36,7 @@ export default {
           this.loadingSwitch(true)
           this.$store.commit('loading/reset_loadedList')
           setTimeout(() => {
+            this.$store.commit('interface/loading', true)
             for(let i = n.length; i > 0; i--) {
               const img = new Image()
               const index = n.length - i
@@ -51,7 +52,10 @@ export default {
     loadedList: {
       handler: function (n, p) {
         if (n.length && this.preloadList.length == n.length) {
-          setTimeout(() => this.loadingSwitch(false), this.delay)
+          setTimeout(() => {
+            this.$store.commit('interface/loading', false)
+            this.loadingSwitch(false)
+          }, this.delay)
         }
       }
     }

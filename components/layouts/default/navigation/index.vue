@@ -1,9 +1,7 @@
 <template>
 <div class="layouts_default_navigation_area">
-  <v-left-bottom :view="!loading"/>
   <v-left-top :view="!loading"/>
   <v-right-middle :view="!loading"/>
-  <v-right-bottom :view="!loading"/>
   <v-right-top :view="!loading"/>
 </div>
 </template>
