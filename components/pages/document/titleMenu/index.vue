@@ -9,6 +9,7 @@
     :path="path"
     :focus="index == focus"
     @mouseover.native="focus = index"
+    :ref="index"
   />
 </div>
 </template>
@@ -23,11 +24,42 @@ export default {
   computed: {
     menu () {
       return this.$store.getters['menu']
+    },
+    windowHeight () {
+      return this.$store.getters['interface/windowHeight']
     }
   },
   data () {
     return {
-      focus: 0
+      focus: 0,
+      count: 0
+    }
+  },
+  methods: {
+    focusOn (focus) {
+      if (this.focus == focus) {
+        this.count++
+        setTimeout(() => this.focusOn(focus), 100)
+        if (this.count == 8) {
+          const el = ((this.$refs[focus] || {})[0] || {}).$el
+          if (el) {
+            const top = el.getBoundingClientRect().top
+            const height = el.getBoundingClientRect().height
+            const distance = top - (this.windowHeight / 2) + (height / 2)
+            this.$EventBus.$emit('scrollMove', distance)
+          }
+        }
+      }
+      else this.count = 0
+    }
+  },
+  watch: {
+    focus: {
+      handler: function (n, p) {
+        this.count = 0
+        this.focusOn(n)
+      },
+      immediate: true
     }
   }
 }

@@ -17,6 +17,9 @@ export default {
     },
     scrollPosition_lerp () {
       return this.$store.getters['interface/scrollPosition_lerp']
+    },
+    scrollAcceleration () {
+      return this.$store.getters['interface/scrollAcceleration']
     }
   },
   methods: {
@@ -40,6 +43,9 @@ export default {
     })
     this.setScrollPosition()
     this.lerp()
+    this.$EventBus.$on('scrollMove', distance => {
+      window.scrollTo(0, this.scrollPosition + (distance / this.scrollAcceleration))
+    })
   },
   beforeDestroy () {
     window.removeEventListener('scroll', () => {}, true)
