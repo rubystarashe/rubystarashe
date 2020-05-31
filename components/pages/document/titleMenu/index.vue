@@ -27,6 +27,9 @@ export default {
     },
     windowHeight () {
       return this.$store.getters['interface/windowHeight']
+    },
+    scrollPosition () {
+      return this.$store.getters['interface/scrollPosition']
     }
   },
   data () {
@@ -40,17 +43,25 @@ export default {
       if (this.focus == focus) {
         this.count++
         setTimeout(() => this.focusOn(focus), 100)
-        if (this.count == 8) {
-          const el = ((this.$refs[focus] || {})[0] || {}).$el
-          if (el) {
-            const top = el.getBoundingClientRect().top
-            const height = el.getBoundingClientRect().height
-            const distance = top - (this.windowHeight / 2) + (height / 2)
-            this.$EventBus.$emit('scrollMove', distance)
-          }
+        if (this.count == 20) {
+          this.scrollTo(focus)
+        }
+        if (this.count > 100) {
+          const next = this.menu.length < focus + 1 ? 0 : focus + 1
+          this.focus = next
+          this.scrollTo(next)
         }
       }
       else this.count = 0
+    },
+    scrollTo (ref) {
+      const el = ((this.$refs[ref] || {})[0] || {}).$el
+      if (el) {
+        const top = el.getBoundingClientRect().top
+        const height = el.getBoundingClientRect().height
+        const distance = top - (this.windowHeight / 2) + (height / 2)
+        this.$EventBus.$emit('scrollMove', distance)
+      }
     }
   },
   watch: {
@@ -60,6 +71,11 @@ export default {
         this.focusOn(n)
       },
       immediate: true
+    },
+    scrollPosition: {
+      handler: function (n, p) {
+        this.count = 0
+      }
     }
   }
 }
