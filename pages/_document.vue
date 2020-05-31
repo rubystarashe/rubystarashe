@@ -36,7 +36,8 @@ export default {
   },
   methods: {
     setScrollHeight (route = this.route) {
-      this.$store.commit('interface/bodyScroll', this.windowHeight + ((this.$refs[route].$el.scrollHeight - this.windowHeight) / this.scrollAcceleration))
+      const documentHeight = ((this.$refs[route] || {}).$el || {}).scrollHeight || this.windowHeight
+      this.$store.commit('interface/bodyScroll', this.windowHeight + ((documentHeight - this.windowHeight) / this.scrollAcceleration))
     }
   },
   watch: {
