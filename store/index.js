@@ -1,16 +1,24 @@
 export const state = () => ({
   menu: [
     {
-      title: 'abc'
+      title: 'SPINEL',
+      description: 'Webview Desktop App',
+      path: '/spinel'
     },
     {
-      title: 'abc'
+      title: 'Path of Rubystar',
+      description: 'Webview Desktop App',
+      path: '/poe'
     },
     {
-      title: 'abc'
+      title: 'Gersang Launcher',
+      description: 'Webview Desktop & Mobile App',
+      path: '/gersang'
     },
     {
-      title: 'abc'
+      title: 'Web Camp',
+      description: '강의',
+      path: '/camp'
     }
   ]
 })

@@ -1,17 +1,52 @@
 <template>
+<nuxt-link :to="path">
 <div class="document_titleMenu_title_area">
-  <div>{{title}}</div>
+  <div class="index" :style="{ opacity: focus ? 1 : 0.7 }">{{computedIndex}}</div>
+  <div class="title"
+    :style="{
+      color: focus ? 'black' : 'rgba(0, 0, 0, 0)',
+      '-webkit-text-stroke': focus ? '1px #EFEFEF' : '1px black'
+    }"
+  >{{title}}</div>
+  <div class="description" :style="{ opacity: focus ? 1 : 0.7 }">{{description}}</div>
 </div>
+</nuxt-link>
 </template>
 
 <script>
 export default {
-  props: ['index', 'title']
+  props: ['index', 'title', 'description', 'focus', 'path'],
+  computed: {
+    computedIndex () {
+      return this.index + 1 > 9 ? this.index + 1 : '0' + (this.index + 1)
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 .document_titleMenu_title_area {
-  height: 40vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: calc(1vh + 7vw) 0;
+  padding: 0 calc(2vh + 2vw);
+  margin-left: 20%;
+  .index {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: calc(1vh + 1vw);
+    color: black;
+  }
+  .title {
+    font-size: calc(3vh + 3vw);
+  }
+  .description {
+    margin-top: calc(.5vh + .5vw);
+    margin-left: calc(.2vh + .2vw);
+    font-size: calc(1vh + 1vw);
+    color: black;
+  }
 }
 </style>

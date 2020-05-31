@@ -1,4 +1,5 @@
 <template>
+<nuxt-link to="/">
 <div class="layouts_default_navigation_left_top_area"
   :style="{
     left: view ? 'calc(2vh + 2vw)' : '15%',
@@ -11,6 +12,7 @@
     <span style="float: left">Ashe</span>
   </v-navigation-element>
 </div>
+</nuxt-link>
 </template>
 
 <script>

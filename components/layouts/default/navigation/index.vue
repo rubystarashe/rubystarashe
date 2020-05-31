@@ -38,5 +38,26 @@ export default {
   z-index: 9;
   color: white;
   mix-blend-mode: exclusion;
+
+  a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:active {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
 }
 </style>
