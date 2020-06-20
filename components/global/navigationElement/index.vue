@@ -42,7 +42,7 @@ export default {
       if (this.offsetX_Lerp == this.offsetX && this.offsetY_Lerp == this.offsetY) this.lerpCheck = false
       else {
         this.lerpCheck = true
-        setTimeout(this.lerp, 1000/144)
+        setTimeout(this.lerp, 1000/60)
       }
     }
   }

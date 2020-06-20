@@ -31,7 +31,7 @@ export default {
       if (this.scrollPosition_lerp != this.scrollPosition) {
         this.$store.dispatch('interface/set_scrollPosition_lerp', this.$lerp(this.scrollPosition_lerp, this.scrollPosition, 0.1).toFixed(1))
       }
-      setTimeout(this.lerp, 1000/144)
+      setTimeout(this.lerp, 1000/60)
     }
   },
   mounted () {

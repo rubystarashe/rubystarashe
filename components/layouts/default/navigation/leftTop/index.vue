@@ -9,7 +9,7 @@
 >
   <v-navigation-element :lock="!view">
     <span style="float: left">Rubystar</span>
-    <span style="float: left">Ashe</span>
+    <span>Ashe</span>
   </v-navigation-element>
 </div>
 </nuxt-link>

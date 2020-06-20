@@ -1,6 +1,7 @@
 <template>
-<div class="document_area" :style="{ transform: `translateY(${0 - documentPosition}px)`, opacity: init ? 1 : 0 }">
-  <v-title-Menu v-show="route == 'titleMenu'" ref="titleMenu"/>
+<div>
+  <div class="document_area" :style="{ transform: `translateY(${0 - (route == 'titleMenu' ? 0 : documentPosition)}px)`, opacity: init ? 1 : 0 }"></div>
+  <v-title-Menu ref="titleMenu" :documentPosition="documentPosition" :style="{ opacity: init ? 1 : 0 }"/>
 </div>
 </template>
 
