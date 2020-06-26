@@ -8,7 +8,7 @@
     :description="description"
     :path="path"
     :focus="index == focus"
-    @mouseover.native="focus = index"
+    @over="$route.path == '/' && !animating ? focus = index : null"
     :ref="path"
   />
 </div>
@@ -50,7 +50,8 @@ export default {
       focus: 0,
       count: 0,
       interval: null,
-      titleSpace: 0
+      titleSpace: 0,
+      animating: false
     }
   },
   methods: {
@@ -58,11 +59,11 @@ export default {
       if (this.focus == focus) {
         this.count++
         setTimeout(() => this.focusOn(focus), 100)
-        if (this.count == 15) {
+        if (this.count == 5) {
           this.scrollTo(focus)
         }
         if (this.count > 100) {
-          const next = this.menu.length < focus + 1 ? 0 : focus + 1
+          const next = this.menu.length <= focus + 1 ? 0 : focus + 1
           this.focus = next
           this.scrollTo(next)
         }
@@ -73,10 +74,14 @@ export default {
       const path = (this.menu[index] || {}).path
       const el = ((this.$refs[path] || {})[0] || {}).$el
       if (el) {
+        this.animating = true
         const top = el.getBoundingClientRect().top
         const height = el.getBoundingClientRect().height
         const distance = top - (this.windowHeight / 2) + (height / 2)
         this.$EventBus.$emit('scrollMove', distance)
+        setTimeout(() => {
+          this.animating = false
+        }, 500)
       }
     },
     lerp () {
@@ -87,11 +92,14 @@ export default {
   },
   mounted () {
     this.interval = setInterval(() => this.lerp(), 1000/60)
-    
-      const path = this.$route.path
-      const element = (((this.$refs[path] || {})[0] || {}).$el || {}).offsetTop
-      if (element) this.titleSpace = (element || 0) - (this.windowHeight / 5)
-      else this.titleSpace =  0
+    const path = this.$route.path
+    const element = (((this.$refs[path] || {})[0] || {}).$el || {}).offsetTop
+    if (element) this.titleSpace = (element || 0) - (this.windowHeight / 5)
+    else this.titleSpace =  0
+
+    if (path != '/') {
+      this.focus = this.menu.findIndex(e => e.path == path)
+    }
   },
   beforeDestroy () {
     clearInterval(this.interval)
